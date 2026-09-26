@@ -1,3 +1,47 @@
 
-<h1>welcome to our website</h1> <p> branch of economic 
-1,macro and 2,micro!</p> <button>click here</button>index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eden's Typing Game</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f0f4f8; }
+    h1 { color: #2c3e50; }
+    .word-box { font-size: 28px; font-weight: bold; color: #2980b9; margin: 20px 0; }
+    input { font-size: 18px; padding: 10px; width: 80%; max-width: 300px; text-align: center; border: 2px solid #3498db; border-radius: 8px; }
+    .score-box { font-size: 20px; color: #27ae60; margin-top: 15px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h1>🎮 Eden's Typing Speed Game</h1>
+  <p>Type the target word below as fast as you can!</p>
+
+  <div class="word-box" id="targetWord">coding</div>
+
+  <input type="text" id="userInput" placeholder="Type here..." oninput="checkWord()">
+
+  <div class="score-box">Score: <span id="score">0</span></div>
+
+  <script>
+    const words = ["coding", "website", "developer", "ethiopia", "computer", "python", "javascript", "future"];
+    let score = 0;
+
+    function checkWord() {
+      let currentWord = document.getElementById("targetWord").innerText;
+      let userTyped = document.getElementById("userInput").value.trim().toLowerCase();
+
+      if (userTyped === currentWord) {
+        score++;
+        document.getElementById("score").innerText = score;
+        document.getElementById("userInput").value = "";
+        
+        // Pick a new random word
+        let nextWord = words[Math.floor(Math.random() * words.length)];
+        document.getElementById("targetWord").innerText = nextWord;
+      }
+    }
+  </script>
+
+</body>
+</html>
